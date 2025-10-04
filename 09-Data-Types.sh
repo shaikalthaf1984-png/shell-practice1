@@ -1,0 +1,9 @@
+#!/bin/bash
+
+NUMBER1=100
+NUMBER2=200
+NUMBER3=100
+
+SUM=$(($NUMBER1+$NUMBER2+$NUMBER3))
+
+echo "SUM is: ${SUM}"
