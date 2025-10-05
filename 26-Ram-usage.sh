@@ -14,10 +14,10 @@ MESSAGE=""
 
 while IFS= read -r line
 do
-USAGE=$( $MEM_INFO )
-CURRE_AVAILABLE=$(echo $MEM_INFO -ge 2 | awk '{print $7}')
+USAGE=$( $USED_MEM % $TOTAL_MEM * 100 )
+CURRE_AVAILABLE=$(echo $USAGE -ge 2 | awk '{print $7}')
 if [ $USAGE -ge $RAM_THRESHOLD ]; then
-MESSAGE="High RAM Usage on $CURRE_AVAILABLE: $USAGE % <br>"
+MESSAGE+="High RAM Usage on $CURRE_AVAILABLE: $USAGE % <br>"
  fi
 done <<< $MEM_INFO
 
