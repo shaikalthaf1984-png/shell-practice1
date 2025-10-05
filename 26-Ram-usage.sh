@@ -12,7 +12,7 @@ AVAILABLE_MEM=$(free -m | grep Mem | awk '{print $7}')
 IP_ADDRESS=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
 MESSAGE=""
 
-while IFS=read line
+while IFS= read -r line
 do
 USAGE=$( $USED_MEM % $TOTAL_MEM * 100 )
 CURRE_AVAILABLE=$(echo $USAGE -ge 2 | awk '{print $7}')
