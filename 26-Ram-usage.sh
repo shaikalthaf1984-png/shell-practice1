@@ -23,7 +23,7 @@ done <<< $MEM_INFO
 
 echo -e "Message Body: $MESSAGE"
 
-#sh mail.sh "shaikalthaf1984@gmail.com" "High RAM Usage Alert" "High RAM Usage" "$MESSAGE" "$IP_ADDRESS" "DevOps Team"
+sh mail.sh "shaikalthaf1984@gmail.com" "High RAM Usage Alert" "High RAM Usage" "$MESSAGE" "$IP_ADDRESS" "DevOps Team"
 
 # TO_ADDRESS=$1
 # SUBJECT=$2
