@@ -5,7 +5,7 @@
 # The `awk` command is used to process the second line (Mem:)
 # $2 is the total memory, $3 is the used memory
 MEM_INFO=$(free -m | awk 'NR==2{printf "%.2f", $3*100/$2 }')
-RAM_THRESHOLD=2
+RAM_THRESHOLD=200
 TOTAL_MEM=$(free -m | grep  Mem | awk '{print $2}')
 USED_MEM=$(free -m | grep Mem | awk '{print $3}' )
 AVAILABLE_MEM=$(free -m | grep Mem | awk '{print $7}')
