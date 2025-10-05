@@ -1,16 +1,16 @@
 #!/bin/bash
 
-MEM_USAGE=$(free -h | grep  Mem)
-RAM_THRESHOLD=2
+# Use free -m to get memory stats in MB and pipe the output to awk.
+# The 'Mem:' line is the second line (NR==2).
+# $2 is the total memory, and $3 is the used memory.
+# The calculation `($3/$2)*100` computes the percentage.
+# printf "%.2f%%\n" formats the output to two decimal places followed by a percentage sign.
 
-IP_ADDRESS=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
-MESSAGE=""
+ram_usage=$(free -m | awk 'NR==2{printf "%.2f", ($3/$2)*100}')
 
-while IFS= read -r line
-do
-    USAGE=$(echo $line | awk '{print $2}' | cut -d "M" -f1)
-    MEMORY=$(echo $line | awk '{print $3}')
-    if [ $USAGE -ge $RAM_THRESHOLD ]; then
-        MESSAGE+="High Ram usage on $Memory: $USAGE % <br>" # escaping
-    fi
-done <<< $MEM_USAGE
+echo "Current RAM usage: ${ram_usage}%"
+
+# Example of using the value in conditional logic
+#if (( $(echo "$ram_usage > 80" | bc -l) )); then
+ # echo "Warning: RAM usage is above 80%!"
+#fi
