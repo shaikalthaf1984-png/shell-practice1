@@ -32,4 +32,4 @@ if (( $(echo "$used_percentage > $THRESHOLD" | bc -l) )); then
   # For example:
   # echo "High RAM usage" | mail -s "RAM Alert on server" your_email@example.com
 else
-  echo "RAM usage is within acceptable limits."
+  echo "RAM usage is within acceptable limits"
