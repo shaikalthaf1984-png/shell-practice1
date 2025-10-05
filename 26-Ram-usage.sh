@@ -11,6 +11,6 @@ ram_usage=$(free -m | awk 'NR==2{printf "%.2f", ($3/$2)*100}')
 echo "Current RAM usage: ${ram_usage}%"
 
 # Example of using the value in conditional logic
-if (( $(echo "$ram_usage > 80") )); then
+if (( $(echo "$ram_usage > 80" | bc -l) )); then
  echo "Warning: RAM usage is above 80%!"
 fi
