@@ -12,3 +12,5 @@ MESSAGE=""
 while IFS=read -r line
 do
 USAGE=$(echo $line | awk '{print $3}')
+AVAILABLE=$(echo $line | awk '{print $7}')
+
